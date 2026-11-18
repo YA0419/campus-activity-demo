@@ -30,10 +30,12 @@
     && (event.origin ? event.canRegister === true && event.registrationStatus === "Open" : registrationLabel(event, now) === "報名中") && statusFor(event, now) === "upcoming");
   function validateEvents(data) {
     if (!Array.isArray(data) || new Set(data.map(e=>e?.id)).size !== data.length) throw new Error("Invalid events response");
-    const allowed=["id","title","category","date","endDate","startTime","endTime","deadline","location","organizer","description","benefits","color","icon","format","timeStatus","displayStartTime","displayEndTime","submissionEndDate","eventStatus","registrationStatus","sourceUrl","activityFormUrl","originalTitle","meetingUrl","publisherType"];
+    const allowed=["id","title","category","date","endDate","startTime","endTime","deadline","location","organizer","description","benefits","color","icon","format","timeStatus","displayStartTime","displayEndTime","submissionEndDate","eventStatus","registrationStatus","sourceUrl","activityFormUrl","originalTitle","meetingUrl","publisherType","posterUrl"];
+    const approvedPosters={"38": "images/posters/imsa-38-0a2f19574baf.webp", "43": "images/posters/imsa-43-525b1cf92257.webp"};
     data=data.map(raw=>{
       if(!raw||Object.keys(raw).some(k=>!allowed.includes(k)))throw new Error("Unexpected public snapshot field");
-      const e={...raw,origin:"PublicSnapshot",timeZone:"Asia/Taipei",signupUrl:raw.activityFormUrl??null,posterUrl:null,canRegister:false,informationLevel:raw.date?"Complete":"Partial"};
+      if(raw.posterUrl != null && raw.posterUrl !== approvedPosters[raw.id]) throw new Error("Unapproved public poster path");
+      const e={...raw,origin:"PublicSnapshot",timeZone:"Asia/Taipei",signupUrl:raw.activityFormUrl??null,posterUrl:raw.posterUrl??null,canRegister:false,informationLevel:raw.date?"Complete":"Partial"};
       e.temporalState=temporal(e);e.canOpenActivityForm=e.temporalState!=="Past"&&e.eventStatus==="Scheduled"&&!["Full","Closed"].includes(e.registrationStatus)&&Boolean(safeUrl(e.activityFormUrl,false));return e;
     });
     for (const e of data) {

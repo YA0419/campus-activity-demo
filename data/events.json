@@ -176,7 +176,8 @@
       "activityFormUrl": null,
       "originalTitle": null,
       "meetingUrl": null,
-      "publisherType": "校內單位發布"
+      "publisherType": "校內單位發布",
+      "posterUrl": "images/posters/imsa-38-0a2f19574baf.webp"
     },
     {
       "id": 39,
@@ -318,7 +319,8 @@
       "activityFormUrl": "https://forms.gle/LJqFKdhVwnWPfVuh8",
       "originalTitle": null,
       "meetingUrl": null,
-      "publisherType": "校內單位發布"
+      "publisherType": "校內單位發布",
+      "posterUrl": "images/posters/imsa-43-525b1cf92257.webp"
     }
   ]
 }
