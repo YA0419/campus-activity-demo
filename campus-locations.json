@@ -1,0 +1,194 @@
+{
+  "version": "campus-locations-public-1",
+  "image": {
+    "width": 1920,
+    "height": 1104,
+    "path": "images/campus-map.jpg"
+  },
+  "normalization": {
+    "allowedCampusPrefixes": [
+      "實踐大學高雄校區"
+    ]
+  },
+  "buildings": [
+    {
+      "id": "C",
+      "name": "C棟",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 58.69791666666667,
+      "yPercent": 33.242753623188406,
+      "aliases": [
+        "C棟",
+        "C棟教學大樓"
+      ],
+      "roomPattern": "^C\\s*(?:棟\\s*)?([1-9][0-9]{2,3})(?:\\s*(?:教室|會議室))?$",
+      "roomCodes": [
+        "C101",
+        "C102",
+        "C307"
+      ],
+      "requireVerifiedRoomCode": true,
+      "roomPrefix": "C"
+    },
+    {
+      "id": "D",
+      "name": "D棟",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 55.989583333333336,
+      "yPercent": 23.82246376811594,
+      "aliases": [
+        "D棟",
+        "D棟教學大樓"
+      ],
+      "roomPattern": "^D\\s*(?:棟\\s*)?([1-9][0-9]{2,3})(?:\\s*(?:教室|會議室))?$",
+      "roomCodes": [
+        "D101"
+      ],
+      "requireVerifiedRoomCode": true,
+      "roomPrefix": "D"
+    },
+    {
+      "id": "J",
+      "name": "J棟",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 42.135416666666664,
+      "yPercent": 12.681159420289855,
+      "aliases": [
+        "J棟",
+        "J棟教學大樓"
+      ],
+      "roomPattern": "^J\\s*(?:棟\\s*)?([1-9][0-9]{2,3})(?:\\s*(?:教室|會議室))?$",
+      "roomCodes": [
+        "J301"
+      ],
+      "requireVerifiedRoomCode": true,
+      "roomPrefix": "J"
+    },
+    {
+      "id": "GYM",
+      "name": "體育館",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 38.854166666666664,
+      "yPercent": 26.17753623188406,
+      "aliases": [
+        "體育館"
+      ],
+      "roomPattern": null,
+      "roomCodes": []
+    },
+    {
+      "id": "I",
+      "name": "I棟",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 69.375,
+      "yPercent": 12.13768115942029,
+      "aliases": [
+        "I棟",
+        "I棟教學大樓"
+      ],
+      "roomPattern": null,
+      "roomCodes": []
+    },
+    {
+      "id": "B_HALL",
+      "name": "B棟演講廳",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 52.760416666666664,
+      "yPercent": 19.202898550724637,
+      "aliases": [
+        "B棟演講廳"
+      ],
+      "roomPattern": null,
+      "roomCodes": []
+    },
+    {
+      "id": "F",
+      "name": "F棟",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 45.208333333333336,
+      "yPercent": 31.521739130434785,
+      "aliases": [
+        "F棟",
+        "F棟教學大樓"
+      ],
+      "roomPattern": null,
+      "roomCodes": []
+    },
+    {
+      "id": "H",
+      "name": "H宿",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 63.125,
+      "yPercent": 21.014492753623188,
+      "aliases": [
+        "H宿",
+        "H宿舍",
+        "H棟宿舍",
+        "H棟女生宿舍",
+        "H棟"
+      ],
+      "roomPattern": null,
+      "roomCodes": []
+    },
+    {
+      "id": "M",
+      "name": "M棟",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 79.27083333333333,
+      "yPercent": 33.8768115942029,
+      "aliases": [
+        "M棟",
+        "M宿",
+        "M棟宿舍",
+        "M宿舍"
+      ],
+      "roomPattern": null,
+      "roomCodes": []
+    },
+    {
+      "id": "N",
+      "name": "N棟",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 86.14583333333333,
+      "yPercent": 35.32608695652174,
+      "aliases": [
+        "N棟",
+        "N宿",
+        "N棟宿舍",
+        "N宿舍"
+      ],
+      "roomPattern": null,
+      "roomCodes": []
+    },
+    {
+      "id": "SPAIN",
+      "name": "西班牙廣場",
+      "coordinateStatus": "Preview",
+      "xPercent": 50,
+      "yPercent": 29.438405797101446,
+      "aliases": [
+        "西班牙廣場"
+      ],
+      "roomPattern": null,
+      "roomCodes": [],
+      "markerStyle": "named-point",
+      "markerLabel": "西班牙廣場",
+      "emptyMessage": "此日期沒有活動"
+    },
+    {
+      "id": "CHUANTANG",
+      "name": "穿堂",
+      "coordinateStatus": "Confirmed",
+      "xPercent": 57.1875,
+      "yPercent": 35.14492753623188,
+      "aliases": [
+        "穿堂"
+      ],
+      "roomPattern": null,
+      "roomCodes": [],
+      "markerStyle": "named-point",
+      "markerLabel": "穿堂",
+      "emptyMessage": "此日期沒有活動"
+    }
+  ]
+}

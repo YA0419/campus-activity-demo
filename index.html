@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07512D">
+  <meta name="description" content="實踐大學高雄校區校園活動地圖，瀏覽近期活動與活動資訊。">
+  <title>校園活動地圖｜實踐大學高雄校區</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="map.css"><link rel="stylesheet" href="map-anchors.css">
+  <meta name="events-data-url" content="data/events.json">
+  <script src="events-ui.js" defer></script>
+  
+  <script src="app.js" defer></script><script src="map-core.js" defer></script><script src="map-placement.js" defer></script><script src="map-ui.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="校園活動地圖首頁">
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <span>校園活動地圖</span>
+      </a>
+      <nav class="top-nav" aria-label="主要導覽">
+        <a class="nav-link" href="#home" data-page="home" aria-current="page">首頁</a>
+        <a class="nav-link" href="#upcoming" data-page="upcoming">活動列表</a>
+        <a class="nav-link" href="#past" data-page="past">歷史活動</a>
+        <button class="login-link" id="demo-info-entry" type="button">展示說明</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <p class="snapshot-notice" id="snapshot-notice" role="status">教授展示版｜正在載入公開活動快照。</p>
+    <section class="map-section" aria-labelledby="map-heading">
+      <div class="section-heading map-heading">
+        <h1 id="map-heading">實踐大學高雄校區</h1>
+      </div>
+            <div class="map-controls" role="group" aria-label="地圖活動日期">
+        <button type="button" data-map-mode="today" aria-pressed="true">今天</button>
+        <button type="button" data-map-mode="recent" aria-pressed="false">近期活動</button>
+        <button type="button" data-map-mode="date" aria-pressed="false">選擇日期</button>
+        <label for="map-date">活動日期 <input id="map-date" type="date" disabled></label>
+      </div>
+      <p id="map-period"></p>
+      <p id="map-status" role="status" aria-live="polite">正在載入地圖活動…</p>
+      <button id="map-retry" type="button" hidden>重新載入活動</button>
+      <p id="map-pending-note" class="map-pending-note"></p><div class="map-stage"><figure class="map-frame interactive-map"><img src="images/campus-map.jpg" alt="實踐大學高雄校區校園地圖，含教學與行政單位、宿舍、餐廳及校園道路資訊" fetchpriority="high"><div id="map-markers" aria-label="校園建築活動"></div></figure><section id="map-popup" class="map-popup" role="region" aria-labelledby="map-popup-title" hidden><div class="map-popup-header"><div><h2 id="map-popup-title">建築活動</h2><p id="map-popup-count" aria-live="polite"></p></div><button id="map-popup-close" type="button" aria-label="關閉建築活動泡泡">×</button></div><div id="map-results" aria-live="polite"></div></section></div><div id="map-secondary"></div>
+    </section>
+
+    <section class="discovery-section" id="activities" aria-label="活動搜尋與篩選" hidden>
+      <div class="discovery-inner">
+        <form class="search-form" id="search-form" role="search">
+          <label class="search-field" for="search-input"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="search-input" aria-label="搜尋活動名稱、關鍵字或主辦單位" type="search" placeholder="搜尋活動名稱、關鍵字或主辦單位……" autocomplete="off"></label>
+          <button class="search-button" id="apply-search" type="submit">搜尋</button>
+        </form>
+
+        <div class="filter-groups">
+          <div class="filter-group"><div class="filter-title"><span class="filter-icon">▦</span><span>活動類型</span></div><div class="chip-list" id="category-filters" aria-label="活動類型篩選"></div></div>
+          <div class="filter-group"><div class="filter-title"><span class="filter-icon">✦</span><span>福利標籤</span></div><div class="chip-list" id="benefit-filters" aria-label="福利標籤篩選"></div></div>
+        </div>
+
+        <div class="filter-bottom"><span class="filter-hint">可同時選擇活動類型與福利</span><button class="clear-filters" id="clear-filters" type="button">清除篩選</button></div>
+        <div class="view-switch" role="group" aria-label="活動日期分類"><button type="button" data-view="upcoming">近期活動</button><button type="button" data-view="past">歷史活動</button><button type="button" data-view="undetermined">日期待確認</button></div>
+        <div class="list-toolbar">
+          <h1 class="list-title" id="list-title">活動列表</h1>
+          <p class="results-line" id="results-summary" aria-live="polite">正在載入活動…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="events-section" aria-label="活動列表" hidden>
+      <div class="events-inner">
+        <div class="empty-state" id="load-state" role="status" aria-live="polite" hidden><p id="load-message"></p><button class="empty-clear" id="retry-load" type="button" hidden>重新載入活動</button></div>
+        <div class="activity-grid" id="activity-grid"></div>
+        <div class="empty-state" id="empty-state" hidden><span class="empty-icon" aria-hidden="true">⌕</span><h2>找不到符合條件的活動</h2><p>請試試其他關鍵字，或清除部分篩選條件。</p><button class="empty-clear" id="empty-clear" type="button">清除篩選，查看近期活動</button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><span>實踐大學高雄校區</span></div></footer>
+
+  <dialog class="detail-dialog" id="event-dialog" aria-labelledby="dialog-title"><button class="dialog-close" id="dialog-close" aria-label="關閉活動詳情">×</button><div class="dialog-content" id="dialog-content"></div></dialog>
+  <dialog class="login-dialog" id="demo-info-dialog" aria-labelledby="demo-info-dialog-title"><button class="dialog-close" id="demo-info-dialog-close" aria-label="關閉展示說明">×</button><div class="login-message"><h2 id="demo-info-dialog-title">教授展示版說明</h2><p>這是學生前台的靜態資料快照，不提供登入、活動管理或自動更新。</p><p>活動依臺灣目前日期分類，未知日期另列。報名、名額與活動異動請以官方來源為準。</p><p>地圖可選擇2026/11/20並點D棟，查看國際生聚餐；不會把歷史活動冒充為今天。</p><p>海報尚未確認公開展示條件，先使用原有無海報佔位。校園地圖經使用者確認可供本次教授展示，保留原署名。</p><button class="search-button" id="demo-info-dialog-ok" type="button">知道了</button></div></dialog>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
