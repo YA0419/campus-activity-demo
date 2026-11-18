@@ -31,7 +31,7 @@
   function validateEvents(data) {
     if (!Array.isArray(data) || new Set(data.map(e=>e?.id)).size !== data.length) throw new Error("Invalid events response");
     const allowed=["id","title","category","date","endDate","startTime","endTime","deadline","location","organizer","description","benefits","color","icon","format","timeStatus","displayStartTime","displayEndTime","submissionEndDate","eventStatus","registrationStatus","sourceUrl","activityFormUrl","originalTitle","meetingUrl","publisherType","posterUrl"];
-    const approvedPosters={"38": "images/posters/imsa-38-0a2f19574baf.webp", "43": "images/posters/imsa-43-525b1cf92257.webp"};
+    const approvedPosters={"12": "images/posters/official-12-55527-430d1a61da94.webp", "13": "images/posters/official-13-55622-252d545cea42.jpg", "18": "images/posters/official-18-55493-c35f91d860b8.webp", "38": "images/posters/imsa-38-0a2f19574baf.webp", "39": "images/posters/official-39-55460-b94367345537.webp", "40": "images/posters/official-40-55713-ed5e27280028.webp", "41": "images/posters/official-41-55427-0ce5552d3ad8.jpg", "42": "images/posters/official-42-55492-49148acee606.jpg", "43": "images/posters/imsa-43-525b1cf92257.webp"};
     data=data.map(raw=>{
       if(!raw||Object.keys(raw).some(k=>!allowed.includes(k)))throw new Error("Unexpected public snapshot field");
       if(raw.posterUrl != null && raw.posterUrl !== approvedPosters[raw.id]) throw new Error("Unapproved public poster path");
